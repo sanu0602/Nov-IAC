@@ -16,7 +16,7 @@ variable "hw" {
 
 variable "name" {
   type = string
-  default = "gagan-server1"
+  default = "kumar-server1"
   description = "Enter your server name"
 }
 
@@ -28,7 +28,7 @@ ar.image
   tags = {
     Name = var.name
     Env = "test"
-    Owner = "Gagandeep"
+    Owner = "Kumar"
   }
 }
 
