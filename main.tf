@@ -21,8 +21,7 @@ variable "name" {
 }
 
 resource "aws_instance" "myawsserver" {
-  ami = v
-ar.image
+  ami = var.image
   instance_type = var.hw
 
   tags = {
