@@ -1,0 +1,23 @@
+import psycopg2
+
+def get_max_update_time(conn, table_name):
+    """Get the max update time for the specified table."""
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT max(updated_at) AS max_update_time
+        FROM {table_name}
+    """.format(table_name=table_name))
+    max_update_time = cur.fetchone()[0]
+    return max_update_time
+
+def main():
+    """Get the max update time and print if it is more than 24 hours."""
+    conn = psycopg2.connect("dbname=my_database user=my_user password=my_password")
+    max_update_time = get_max_update_time(conn, "abc")
+    now = datetime.datetime.now()
+    diff = now - max_update_time
+    if diff.days >= 1:
+        print("Table abc has not been updated in 24 hours.")
+
+if __name__ == "__main__":
+    main()
